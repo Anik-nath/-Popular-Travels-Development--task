@@ -9,7 +9,7 @@ const DataPage = () => {
       .then((response) => response.text())
       .then((data) => {
         const parsedData = JSON.parse(data);
-        console.log(parsedData.flightOffer);
+        // console.log(parsedData.flightOffer);
         setFlightOffers(parsedData.flightOffer);
       });
   }, []);
@@ -223,7 +223,7 @@ const DataPage = () => {
                         {/* Flight and Aircraft */}
                         <td className="px-6 py-1">
                           {offer.itineraries[0].segments.map((itinerary, i) => (
-                            // Iterate over segments to display flight and aircraft
+                            // display flight and aircraft
                             <tr
                               key={i}
                               scope="row"
@@ -240,7 +240,7 @@ const DataPage = () => {
                         {/* Flight Number */}
                         <td className="px-6 py-1">
                           {offer.itineraries[0].segments.map((itinerary, i) => (
-                            // Iterate over segments to display flight number
+                            // display flight number
                             <tr
                               key={i}
                               scope="row"
@@ -254,14 +254,14 @@ const DataPage = () => {
                         {/* Class */}
                         <td className="px-6 py-1">
                           {offer.class.map((classArray, index) => (
-                            // Iterate over class array to display class
+                            // display class
                             <tr
                               key={index}
                               scope="row"
                               className="px-6 py-1 font-medium whitespace-nowrap"
                             >
                               {classArray.map((classItem, idx) => (
-                                // Iterate over class items to display each item
+                                // display each item
                                 <tr key={idx}>{classItem}</tr>
                               ))}
                             </tr>
@@ -271,15 +271,15 @@ const DataPage = () => {
                         {/* Fare Basis */}
                         <td className="px-6 py-1">
                           {offer.fareBasis.map((classArray, index) => (
-                            // Iterate over fare basis array to display fare basis
+                            // display fare basis
                             <tr
                               key={index}
                               scope="row"
                               className="px-6 py-1 font-medium whitespace-nowrap"
                             >
-                              {classArray.map((classItem, idx) => (
-                                // Iterate over fare basis items to display each item
-                                <tr key={idx}>{classItem}</tr>
+                              {classArray.map((classItem, index) => (
+                                // display each item
+                                <tr key={index}>{classItem}</tr>
                               ))}
                             </tr>
                           ))}
@@ -287,29 +287,35 @@ const DataPage = () => {
 
                         {/* Route */}
                         <td className="px-6 py-1">
-                          {offer.itineraries[0].segments.map((segment, j) => (
-                            // Iterate over segments to display route
-                            <tr key={j}>
-                              {segment.departure.iataCode}-
-                              {segment.arrival.iataCode}
-                            </tr>
-                          ))}
+                          {offer.itineraries[0].segments.map(
+                            (segment, index) => (
+                              // display route
+                              <tr key={index}>
+                                {segment.departure.iataCode}-
+                                {segment.arrival.iataCode}
+                              </tr>
+                            )
+                          )}
                         </td>
 
                         {/* Departure */}
                         <td className="px-6 py-1">
-                          {offer.itineraries[0].segments.map((segment, j) => (
-                            // Iterate over segments to display departure time
-                            <tr key={j}>{segment.departure.at}</tr>
-                          ))}
+                          {offer.itineraries[0].segments.map(
+                            (segment, index) => (
+                              // display departure time
+                              <tr key={index}>{segment.departure.at}</tr>
+                            )
+                          )}
                         </td>
 
                         {/* Arrival */}
                         <td className="px-6 py-1">
-                          {offer.itineraries[0].segments.map((segment, j) => (
-                            // Iterate over segments to display arrival time
-                            <tr key={j}>{segment.arrival.at}</tr>
-                          ))}
+                          {offer.itineraries[0].segments.map(
+                            (segment, index) => (
+                              // display arrival time
+                              <tr key={index}>{segment.arrival.at}</tr>
+                            )
+                          )}
                         </td>
 
                         {/* Duration */}
